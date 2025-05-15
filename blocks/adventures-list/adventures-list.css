@@ -1,0 +1,26 @@
+.adventure-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px 0;
+}
+
+.adventure-button {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.adventure-button:hover {
+    background-color: #f2f2f2;
+}
+
+.adventure-button.active {
+    background-color: #000;
+    color: #fff;
+}

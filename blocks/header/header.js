@@ -8,7 +8,9 @@ function closeOnEscape(e) {
   if (e.code === 'Escape') {
     const nav = document.getElementById('nav');
     const navSections = nav.querySelector('.nav-sections');
-    const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
+    const navSectionExpanded = navSections.querySelector(
+      '[aria-expanded="true"]',
+    );
     if (navSectionExpanded && isDesktop.matches) {
       // eslint-disable-next-line no-use-before-define
       toggleAllNavSections(navSections);
@@ -25,7 +27,9 @@ function closeOnFocusLost(e) {
   const nav = e.currentTarget;
   if (!nav.contains(e.relatedTarget)) {
     const navSections = nav.querySelector('.nav-sections');
-    const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
+    const navSectionExpanded = navSections.querySelector(
+      '[aria-expanded="true"]',
+    );
     if (navSectionExpanded && isDesktop.matches) {
       // eslint-disable-next-line no-use-before-define
       toggleAllNavSections(navSections, false);
@@ -57,9 +61,11 @@ function focusNavSection() {
  * @param {Boolean} expanded Whether the element should be expanded or collapsed
  */
 function toggleAllNavSections(sections, expanded = false) {
-  sections.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
-    section.setAttribute('aria-expanded', expanded);
-  });
+  sections
+    .querySelectorAll('.nav-sections .default-content-wrapper > ul > li')
+    .forEach((section) => {
+      section.setAttribute('aria-expanded', expanded);
+    });
 }
 
 /**
@@ -69,12 +75,20 @@ function toggleAllNavSections(sections, expanded = false) {
  * @param {*} forceExpanded Optional param to force nav expand behavior when not null
  */
 function toggleMenu(nav, navSections, forceExpanded = null) {
-  const expanded = forceExpanded !== null ? !forceExpanded : nav.getAttribute('aria-expanded') === 'true';
+  const expanded = forceExpanded !== null
+    ? !forceExpanded
+    : nav.getAttribute('aria-expanded') === 'true';
   const button = nav.querySelector('.nav-hamburger button');
-  document.body.style.overflowY = (expanded || isDesktop.matches) ? '' : 'hidden';
+  document.body.style.overflowY = expanded || isDesktop.matches ? '' : 'hidden';
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
-  button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+  toggleAllNavSections(
+    navSections,
+    expanded || isDesktop.matches ? 'false' : 'true',
+  );
+  button.setAttribute(
+    'aria-label',
+    expanded ? 'Open navigation' : 'Close navigation',
+  );
   // enable nav dropdown keyboard accessibility
   const navDrops = navSections.querySelectorAll('.nav-drop');
   if (isDesktop.matches) {
@@ -134,16 +148,21 @@ export default async function decorate(block) {
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
-    navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
-      if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-      navSection.addEventListener('click', () => {
-        if (isDesktop.matches) {
-          const expanded = navSection.getAttribute('aria-expanded') === 'true';
-          toggleAllNavSections(navSections);
-          navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        }
+    navSections
+      .querySelectorAll(':scope .default-content-wrapper > ul > li')
+      .forEach((navSection) => {
+        if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
+        navSection.addEventListener('click', () => {
+          if (isDesktop.matches) {
+            const expanded = navSection.getAttribute('aria-expanded') === 'true';
+            toggleAllNavSections(navSections);
+            navSection.setAttribute(
+              'aria-expanded',
+              expanded ? 'false' : 'true',
+            );
+          }
+        });
       });
-    });
   }
 
   // hamburger for mobile
@@ -158,9 +177,48 @@ export default async function decorate(block) {
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+  // Search input with search icon inside
+  const navTools = nav.querySelector('.nav-tools');
+  const searchWrapper = document.createElement('div');
+  searchWrapper.className = 'nav-search';
+  searchWrapper.innerHTML = `
+    <input type="text" placeholder="SEARCH" class="nav-search-input" aria-label="Search" />
+  `;
+  navTools.appendChild(searchWrapper);
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+  // Active class to the current page link
+  // const navLinks = nav.querySelectorAll('a');
+  // navLinks.forEach((link) => {
+  //   if (link.href === window.location.href) {
+  //     link.classList.add('active');
+  //   }
+
+  //   link.addEventListener('click', () => {
+  //     navLinks.forEach((l) => l.classList.remove('active'));
+  //     link.classList.add('active');
+  //   });
+  // });
+  const currentPath = window.location.pathname; // Get the full path
+  const currentPathSegments = currentPath.split('/').filter(Boolean); // Split path into segments
+
+  const navLinks = nav.querySelectorAll('.nav-sections a');
+
+  navLinks.forEach((link) => {
+    const linkPath = new URL(link.href, window.location.origin).pathname; // Get the link's path
+    const linkPathSegments = linkPath.split('/').filter(Boolean); // Split link path into segments
+
+    // Check if the link's path matches or starts with the segments of the current path
+    if (currentPath === linkPath || currentPath.startsWith(linkPath)) {
+      link.classList.add('active');
+    }
+
+    // Optional: If you want to highlight based on the segments of the current path
+    if (linkPathSegments.some((segment, index) => currentPathSegments[index] === segment)) {
+      link.classList.add('active');
+    }
+  });
 }

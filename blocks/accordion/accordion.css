@@ -1,0 +1,147 @@
+/* === Accordion Base Styles === */
+.accordion details {
+    border: 1px solid #dadada;
+}
+
+.accordion details + details {
+    margin-top: 24px;
+}
+
+.accordion details p {
+    margin-bottom: 0.8em;
+}
+
+.accordion details summary {
+    position: relative;
+    padding: 0 16px;
+    padding-right: 46px;
+    cursor: pointer;
+    list-style: none;
+    overflow: auto;
+    transition: background-color 0.2s;
+}
+
+.accordion details[open] summary {
+    background-color: var(--light-color);
+}
+
+.accordion details summary:focus,
+.accordion details summary:hover {
+    background-color: var(--light-color);
+}
+
+.accordion details summary::-webkit-details-marker {
+    display: none;
+}
+
+.accordion details summary::after {
+    content: "+";
+    font-size: 24px;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: inherit;
+    transition: content 0.2s;
+}
+
+.accordion details[open] summary::after {
+    content: "−";
+}
+
+.accordion details .accordion-item-body {
+    padding: 0 16px;
+}
+
+.accordion details[open] .accordion-item-body {
+    border-top: 1px solid #dadada;
+    background-color: var(--background-color);
+}
+
+/* === Layout Container with Side Spacing === */
+.accordion-wrapper-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px; /* side spacing */
+    box-sizing: border-box;
+}
+
+/* === Layout Columns === */
+.section.accordion-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(75% - 12px);
+    float: left;
+    box-sizing: border-box;
+    margin-right: 24px;
+    flex-direction: column;
+}
+
+.section.accordion-container + .section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 25%;
+    float: left;
+    box-sizing: border-box;
+}
+
+/* Clear floats */
+main::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive (stacked on mobile) */
+@media (max-width: 768px) {
+    .section.accordion-container,
+    .section.accordion-container + .section {
+        width: 100%;
+        float: none;
+        padding-left: 0;
+        margin-right: 0;
+    }
+
+    .accordion-wrapper-container {
+        padding: 0 16px;
+    }
+}
+
+/* === Typography and Spacing === */
+.accordion-wrapper {
+    width: 100%;
+}
+
+.accordion-container > .default-content-wrapper p {
+    font-size: 16px;
+    margin: 0 0 13.5px;
+    text-align: justify;
+}
+
+.accordion-item-body p {
+    line-height: 1.75;
+    font-size: 14px;
+}
+
+.section {
+    margin: 0 !important;
+}
+
+.default-content-wrapper #need-more-help {
+    margin: 0;
+    font-size: 24px;
+}
+
+.default-content-wrapper p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.accordion {
+    margin-bottom: 30px;
+}
+
+.default-content-wrapper a {
+    color: darkblue;
+}
