@@ -10,22 +10,9 @@ Codebase for the fictional WKND site, showcasing the capabilities of Adobe's Edg
 - Preview: [WKND Preview Page](https://main--mysite--muniraja-m.aem.page/)
 - Live: [WKND Live Page](https://main--mysite--muniraja-m.aem.live/)
 
-## Installation
-
-```sh
-npm i
-```
-
-## Lint
-
-```sh
-npm run lint
-```
-
 ## Capabilities
 
 Before you begin, ensure you have the [AEM Sidekick Chrome extension](https://chrome.google.com/webstore/detail/aem-sidekick/ccfggkjabjahcjoljmgmklhpaccedipo) installed.
-
 
 ## Documentation
 
