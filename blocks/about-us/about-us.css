@@ -62,8 +62,9 @@
 }
 
 /* Make sure to adjust if needed for responsiveness */
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .about-us > ul {
+    display: grid;
     grid-template-columns: 1fr;
   }
 }

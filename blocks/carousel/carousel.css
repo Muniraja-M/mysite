@@ -7,6 +7,7 @@ main .carousel {
     scroll-snap-type: x mandatory;
     overflow: scroll hidden;
     scroll-behavior: smooth;
+
     /* max-width: 1680px; */
     width: 100%;
     margin: auto;
@@ -15,10 +16,7 @@ main .carousel {
 main .carousel picture {
     position: absolute;
     z-index: -1;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    inset: 0; /* shorthand for top, left, bottom, right */
     box-sizing: border-box;
 }
 
@@ -27,9 +25,6 @@ main .carousel img {
     width: 100%;
     height: 100%;
     object-position: 90%;
-}
-main .section .carousel > div {
-    max-width: 1200px;
 }
 
 main .carousel > div {
@@ -41,6 +36,11 @@ main .carousel > div {
     align-items: flex-end;
     display: flex;
 }
+
+main .section .carousel > div {
+    max-width: 1200px;
+}
+
 
 main .carousel div.carousel-text {
     max-width: 1200px;

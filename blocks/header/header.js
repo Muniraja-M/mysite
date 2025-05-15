@@ -191,17 +191,6 @@ export default async function decorate(block) {
   navWrapper.append(nav);
   block.append(navWrapper);
   // Active class to the current page link
-  // const navLinks = nav.querySelectorAll('a');
-  // navLinks.forEach((link) => {
-  //   if (link.href === window.location.href) {
-  //     link.classList.add('active');
-  //   }
-
-  //   link.addEventListener('click', () => {
-  //     navLinks.forEach((l) => l.classList.remove('active'));
-  //     link.classList.add('active');
-  //   });
-  // });
   const currentPath = window.location.pathname; // Get the full path
   const currentPathSegments = currentPath.split('/').filter(Boolean); // Split path into segments
 

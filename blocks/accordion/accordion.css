@@ -7,10 +7,6 @@
     margin-top: 24px;
 }
 
-.accordion details p {
-    margin-bottom: 0.8em;
-}
-
 .accordion details summary {
     position: relative;
     padding: 0 16px;
@@ -19,10 +15,6 @@
     list-style: none;
     overflow: auto;
     transition: background-color 0.2s;
-}
-
-.accordion details[open] summary {
-    background-color: var(--light-color);
 }
 
 .accordion details summary:focus,
@@ -69,12 +61,15 @@
 /* === Layout Columns === */
 .section.accordion-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: column wrap;
     width: calc(75% - 12px);
     float: left;
     box-sizing: border-box;
     margin-right: 24px;
-    flex-direction: column;
+}
+
+.section {
+    margin: 0 !important;
 }
 
 .section.accordion-container + .section {
@@ -94,7 +89,7 @@ main::after {
 }
 
 /* Responsive (stacked on mobile) */
-@media (max-width: 768px) {
+@media (width >= 1px) and (width <= 2px) {
     .section.accordion-container,
     .section.accordion-container + .section {
         width: 100%;
@@ -113,10 +108,9 @@ main::after {
     width: 100%;
 }
 
-.accordion-container > .default-content-wrapper p {
-    font-size: 16px;
-    margin: 0 0 13.5px;
-    text-align: justify;
+.default-content-wrapper p {
+    margin: 0;
+    font-size: 14px;
 }
 
 .accordion-item-body p {
@@ -124,18 +118,15 @@ main::after {
     font-size: 14px;
 }
 
-.section {
-    margin: 0 !important;
+.accordion-container > .default-content-wrapper p {
+    font-size: 16px;
+    margin: 0 0 13.5px;
+    text-align: justify;
 }
 
 .default-content-wrapper #need-more-help {
     margin: 0;
     font-size: 24px;
-}
-
-.default-content-wrapper p {
-    margin: 0;
-    font-size: 14px;
 }
 
 .accordion {
@@ -145,3 +136,4 @@ main::after {
 .default-content-wrapper a {
     color: darkblue;
 }
+

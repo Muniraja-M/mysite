@@ -1,18 +1,6 @@
-/*
- * Copyright 2020 Adobe. All rights reserved.
- * This file is licensed to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
- * OF ANY KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License.
- */
-
 :root {
     /* Define the serif font-family variable */
-    --fontFamilySerif: "Asar", "Georgia", "Times New Roman", Times, serif;
+    --font-family-serif: "Asar", "Georgia", "times new roman", times, serif;
 
     /* colors */
     --background-color: white;
@@ -31,8 +19,8 @@
     --body-font-family:
         "Source Sans Pro", "helvetica neue", helvetica, ubuntu, roboto, noto,
         sans-serif;
-    --heading-font-family: var(--fontFamilySerif, "Asar", Georgia, "Times New Roman", Times, serif);
-    --fixed-font-family: var(--fontFamilySerif, "Asar", Georgia, "Times New Roman", Times, serif), "Roboto Mono", menlo, consolas, "Liberation Mono", monospace;
+    --heading-font-family: var(--font-family-serif, "Asar", Georgia, "times new roman", times, serif);
+    --fixed-font-family: var(--font-family-serif, "Asar", Georgia, "times new roman", times, serif), "Roboto Mono", menlo, consolas, "Liberation Mono", monospace;
 
     /* body sizes */
     --body-font-size-m: 22px;
@@ -49,7 +37,6 @@
 
     /* nav height */
     --nav-height: 115px;
-
     --overlay-text-color: var(--text-color);
     --highlight-text-color: var(--text-color);
     --button-background-color: var(--color-yellow);
@@ -59,8 +46,6 @@
     --default-text-align: left;
 }
 
-
-/* fallback fonts */
 @font-face {
     font-family: roboto-condensed-fallback;
     size-adjust: 88.82%;
@@ -135,18 +120,23 @@ h6 {
 h1 {
     font-size: var(--heading-font-size-xxl);
 }
+
 h2 {
     font-size: var(--heading-font-size-xl);
 }
+
 h3 {
     font-size: var(--heading-font-size-l);
 }
+
 h4 {
     font-size: var(--heading-font-size-m);
 }
+
 h5 {
     font-size: var(--heading-font-size-s);
 }
+
 h6 {
     font-size: var(--heading-font-size-xs);
 }
@@ -300,15 +290,17 @@ main .section.highlight {
 #wknd-guides::after,
 #our-contributors::after,
 #recent-articles::after {
-  border-bottom: 2px solid var(--brandPrimary, var(--button-background-color));
+  border-bottom: 2px solid var(--brand-primary, var(--button-background-color));
   content: "";
   display: block;
   padding-top: 8px;
   width: 18%;
 }
+
 #faqs::after{
   width: 12%;
 }
+
 #our-contributors::after, #wknd-guides::after{
   width:25%;
 }

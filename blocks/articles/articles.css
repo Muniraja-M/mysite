@@ -1,3 +1,9 @@
+/* Layout Styles */
+.articles-wrapper > div {
+    padding: 60px 10px;
+}
+
+/* Articles Block Layout */
 .articles.block > div {
     display: flex;
     flex-direction: row;
@@ -25,20 +31,19 @@
 }
 
 .articles.block ul li {
-    color: rgb(32, 32, 32);
+    color: var(--link-color);
     display: block;
-    font-family:
-        "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 18px;
     height: 136px;
     line-height: 27px;
     list-style: none;
-    margin: 0 20px 18px 20px; /* 20px left/right, 18px bottom */
+    margin: 0 20px 18px;
     text-align: left;
     width: 263px;
     padding: 10px 15px;
-    border-left: 4px solid #cccccc; /* Default left border */
-    background-color: #ffffff;
+    border-left: 4px solid #ccc; /* Default left border */
+    background-color: #fff;
     transition: all 0.3s ease;
     box-sizing: border-box;
 }
@@ -51,13 +56,11 @@
     cursor: pointer;
 }
 
-.articles-wrapper > div {
-    padding: 60px 10px;
-}
 .articles.block h6 {
     padding: 50px;
     font-size: 18px;
 }
+
 .articles.block a {
     text-decoration: none;
 }

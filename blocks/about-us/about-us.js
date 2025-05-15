@@ -10,11 +10,11 @@ export default function decorate(block) {
     // Loop through children and apply class names
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) {
-        div.className = 'about-us-image'; // Image container
+        div.className = 'about-us-image';
       } else if (div.classList.contains('social-media')) {
-        div.className = 'about-us-social'; // Social media links container
+        div.className = 'about-us-social';
       } else {
-        div.className = 'about-us-body'; // Content container
+        div.className = 'about-us-body';
       }
     });
 
@@ -40,6 +40,6 @@ export default function decorate(block) {
   // Optimize image loading
   ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
 
-  block.textContent = ''; // Clear previous content
-  block.append(ul);// Append the updated list
+  block.textContent = '';
+  block.append(ul);
 }

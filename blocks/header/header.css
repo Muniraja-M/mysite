@@ -235,13 +235,7 @@ header nav .nav-sections ul > li > ul > li {
         position: relative;
     }
 
-    header
-        nav
-        .nav-sections
-        .default-content-wrapper
-        > ul
-        > li[aria-expanded='true']
-        > ul {
+    header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
         display: block;
         position: absolute;
         left: -24px;
@@ -270,12 +264,14 @@ header nav .nav-sections ul > li > ul > li {
 }
 
 /* tools */
-header nav .nav-tools {
-    grid-area: tools;
+.nav-tools {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
 }
 
-/* Style for the nav-tools section */
-.nav-tools {
+header nav .nav-tools {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -294,9 +290,8 @@ header nav .nav-tools {
     padding: 8px 12px 8px 25px;
     font-size: 14px;
     border: 1px solid #ccc;
-    border-radius: 0px;
     box-sizing: border-box;
-    background: url(/icons/search.png) no-repeat left center;
+    background: url('/icons/search.png') no-repeat left center;
     background-size: 18px;
     background-color: #ebebeb8a;
 }
@@ -307,8 +302,9 @@ header nav .nav-tools {
 
 .nav-search-input:focus {
     outline: none;
-    border-color: #000000;
+    border-color: #000;
 }
+
 header nav ul a:any-link {
     color: currentcolor;
     text-decoration: none;
@@ -316,7 +312,7 @@ header nav ul a:any-link {
 }
 
 header nav ul a:any-link:hover {
-    color: 000000;
+    color: #000;
     padding: 15px 17px;
     background-color: var(--heading-highlight-color);
     text-decoration: none;
@@ -327,14 +323,15 @@ header nav a.active:focus {
     outline: none;
 }
 
-header nav .nav-sections ul a.active:focus {
-    outline: none;
-}
-
 header nav .nav-sections ul a.active {
-    color: 000000;
+    color: #000;
     padding: 15px 17px;
     background-color: var(--heading-highlight-color);
     text-decoration: none;
     font-size: 14px;
+}
+
+header nav .nav-sections ul a.active:focus {
+    outline: none;
+    background-color: var(--link-color);
 }
