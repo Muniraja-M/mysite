@@ -278,15 +278,16 @@ main .section.highlight {
     padding: 40px 0;
 }
 
-#all-articles, #next-adventures, #recent-articles, #current-adventures, #faqs, #our-contributors, #wknd-guides, #magazine {
+#all-articles,#adventures, #next-adventures, #recent-articles, #current-adventures, #faqs, #our-contributors, #wknd-guides, #magazine {
   padding-bottom: 8px;
 }
 
 #next-adventures::after,
 #all-articles::after,
+#adventures::after,
 #current-adventures::after,
 #faqs::after,
-#magazine,
+#magazine::after,
 #wknd-guides::after,
 #our-contributors::after,
 #recent-articles::after {
@@ -294,13 +295,15 @@ main .section.highlight {
   content: "";
   display: block;
   padding-top: 8px;
-  width: 18%;
+  width: 15%;
 }
 
 #faqs::after{
-  width: 12%;
+  width: 5%;
 }
 
-#our-contributors::after, #wknd-guides::after{
-  width:25%;
+#magazine::after{
+    width: 8%;
 }
+
+
